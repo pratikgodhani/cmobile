@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>Login </title>
+</head>
+<body>
+<form name="registration" id="registration" method="POST" action="jspring_security_check">
+	<table cellspacing="0" cellpadding="0" border="0" align="center">
+		<tbody>
+		<tr>
+			<td>
+				User Name
+			</td>
+			<td>
+				<input type="text" name="j_username" id="j_username"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Password
+			</td>
+			<td>
+				<input type="password" name="j_password" id="j_password"/>
+			</td>
+		</tr>
+		<tr align="center">
+			<td colspan="2">
+				<input type="submit" name="login" value="Login">
+				<input type="reset" name="cancel" value="Cancel">
+			</td>
+		</tr>
+		
+		</tbody>
+	</table>
+
+</form>
+</body>
+</html>

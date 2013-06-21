@@ -1,0 +1,21 @@
+<assembly>
+    <id>build</id>
+    <formats>
+        <format>war</format>
+    </formats>
+    <fileSets>
+        <fileSet>
+            <directory>target/dist</directory>
+            <outputDirectory></outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>target</directory>
+            <outputDirectory>WEB-INF/lib</outputDirectory>
+            <includes>
+                <include>*.jar</include>    
+            </includes>
+        </fileSet>
+    </fileSets>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <includeSiteDirectory>false</includeSiteDirectory> 
+</assembly>
