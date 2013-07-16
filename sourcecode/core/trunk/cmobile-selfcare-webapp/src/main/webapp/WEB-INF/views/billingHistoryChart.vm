@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Billing History</title>
+
+		<script src="resources/jquery-1.9.1.js" type="text/javascript"></script>
+		<script type="text/javascript">
+		
+	$(function () {
+		var xAxisData = new Array();
+		var yAxisData = new Array();
+		var form = $('#billingHistoryChart');
+	    #[[$]]#.ajax({
+        	type: "POST",
+			url: form.attr( 'action' ),
+        	data: '',
+        	success: function(response){
+    			if(response.status == 'Pass'){
+    				for(i =0 ; i < response.result.length ; i++){
+						xAxisData[i] = response.result[i].month;
+						yAxisData[i] = response.result[i].billAmount;
+         			}
+					generateChart(xAxisData, yAxisData);
+                 }else{
+                     $('#error').html("Please correct following errors: " + response.result);
+                 }
+				 
+         	},
+         	error: function(e){
+            	alert('Error: ' + e);
+         	}
+    	});
+    });
+    
+	function generateChart(xAxisData, yAxisData)
+	{
+		$('#container').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Billing History'
+            },
+            subtitle: {
+                text: 'Source: cognizant.com'
+            },
+            xAxis: {
+                categories: xAxisData
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Pound'
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f} pound</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                name: 'Bill Amount',
+                data: yAxisData
+    
+            }]
+        });
+	}
+	
+		</script>
+	</head>
+	<body>
+<script src="resources/highcharts.js"></script>
+<script src="resources/modules/exporting.js"></script>
+<div id="error" style="color: green;"></div>
+<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+
+	</body>
+<form id="billingHistoryChart" action="#springUrl('/billingHistoryData.do')" method="post">
+</form>
+</html>

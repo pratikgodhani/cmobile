@@ -1,11 +1,30 @@
+<head>
+<title>Home</title>
+</head>
 <html>
 <body>
-<h1>Welcome ....  This is a Secured Home page..You must be authorized before you can see this.</h1>
+<h1>Welcome $!customer.username ....  This is a Secured Home page..You must be authorized before you can see this.</h1>
+<h1>Your registerd number is $!customer.mobile ....</h1>
 
 <table >
 	<tr>
+		<td colspan="2">
+			<div id="info" style="color: green;"></div>
+		</td>
+	</tr>
+	<tr>
+		<td> <a href="#springUrl('/bill/lastBill.do')">Last Month Bill</a></td>
+    </tr>
+	<tr>
+		<td> <a href="#springUrl('/bill/unbilledUsage.do')">Unbilled Usage</a></td>
+    </tr>
+	<tr>
+		<td> <a href="#springUrl('/usageStatistics.do')">Usage Statistics</a></td>
+    </tr>
+	<tr>
 		<td> <a href="#springUrl('/logout.do')">Logout</a></td>
     </tr>
+	
 </table>
 </body>
 </html>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net
+http://dozer.sourceforge.net/schema/beanmapping.xsd">
+	<mapping>
+		<class-a>com.cognizant.cmobile.impl.model.Customer</class-a>
+		<class-b>com.cognizant.cmobile.api.model.CustomerVO</class-b>
+	</mapping>
+	<mapping>
+		<class-a>com.cognizant.cmobile.impl.model.Billing</class-a>
+		<class-b>com.cognizant.cmobile.api.model.BillingVO</class-b>
+	</mapping>
+</mappings>

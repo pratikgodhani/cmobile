@@ -18,6 +18,9 @@
     <param-value>org.cmobile.config.ApplicationConfiguration</param-value>
   </context-param>
   <listener>
+	<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+  </listener>
+  <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
   <servlet>

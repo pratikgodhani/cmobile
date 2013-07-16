@@ -1,0 +1,17 @@
+<head>
+<title>Usage Statistics</title>
+</head>
+<html>
+<body>
+<h1>Usage Statistics</h1>
+
+<table >
+	<tr>
+		<td> <a href="#springUrl('/billingHistoryChart.do')">Billing History</a></td>
+    </tr>
+	<tr>
+		<td> <a href="#springUrl('/minuteDataUsageChart.do')">Minutes & Data Usage</a></td>
+    </tr>
+</table>
+</body>
+</html>

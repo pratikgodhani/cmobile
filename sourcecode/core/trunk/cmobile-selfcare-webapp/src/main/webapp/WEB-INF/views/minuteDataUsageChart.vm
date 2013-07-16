@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Billing History</title>
+
+		<script src="resources/jquery-1.9.1.js" type="text/javascript"></script>
+		<script type="text/javascript">
+		
+	$(function () {
+		var durationData = new Array();
+		var minutesData = new Array();
+		var usageData = new Array();
+		var form = $('#billingHistoryChart');
+	    #[[$]]#.ajax({
+        	type: "POST",
+			url: form.attr( 'action' ),
+        	data: '',
+        	success: function(response){
+    			if(response.status == 'Pass'){
+    				for(i =0 ; i < response.result.length ; i++){
+						durationData[i] = response.result[i].month;
+						minutesData[i] = response.result[i].minutes;
+						usageData[i] = response.result[i].totalUsage;
+         			}
+					generateChart(durationData, minutesData, usageData);
+                 }else{
+                     $('#error').html("Please correct following errors: " + response.result);
+                 }
+				 
+         	},
+         	error: function(e){
+            	alert('Error: ' + e);
+         	}
+    	});
+    });
+    
+	function generateChart(durationData, minutesData, usageData)
+	{
+		$('#container').highcharts({
+            chart: {
+                type: 'line',
+                marginRight: 130,
+                marginBottom: 50
+            },
+            title: {
+                text: 'Minutes/Data Usage',
+                x: -20 //center
+            },
+            subtitle: {
+                text: 'Source: cognizant.com',
+                x: -20
+            },
+            xAxis: {
+				title: {
+                    text: 'Month'
+                },
+				categories: durationData
+            },
+            yAxis: {
+                title: {
+                    text: 'Minutes/Data Usage'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+				shared: true
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -10,
+                y: 100,
+                borderWidth: 0
+            },
+            series: [{
+                name: 'Minutes',
+                data: minutesData,
+				tooltip: {
+                    valueSuffix: ' Mins'
+                }
+            }, {
+                name: 'Data Usage',
+                data: usageData,
+				tooltip: {
+                    valueSuffix: ' MB'
+                }
+            }]
+        });
+	}
+	
+		</script>
+	</head>
+	<body>
+<script src="resources/highcharts.js"></script>
+<script src="resources/modules/exporting.js"></script>
+<div id="error" style="color: green;"></div>
+<div id="container" style="min-width: 600px; height: 600px; margin: 0 auto"></div>
+
+	</body>
+<form id="billingHistoryChart" action="#springUrl('/billingHistoryData.do')" method="post">
+</form>
+</html>
