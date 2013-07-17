@@ -21,6 +21,9 @@
 	<tr>
 		<td> <a href="#springUrl('/usageStatistics.do')">Usage Statistics</a></td>
     </tr>
+    <tr>
+		<td> <a href="#springUrl('/plans.do')">Plan Details</a></td>
+    </tr>
 	<tr>
 		<td> <a href="#springUrl('/logout.do')">Logout</a></td>
     </tr>
