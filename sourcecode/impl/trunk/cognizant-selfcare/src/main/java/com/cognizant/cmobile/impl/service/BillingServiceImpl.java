@@ -79,10 +79,8 @@ public class BillingServiceImpl implements BillingService {
 	}
 
 	public InputStream getItemisedMonthlyBill(String month, long year) throws FileNotFoundException {
-
-		InputStream inputStream= null;
-			inputStream = new FileInputStream(
-					"E:\\Cmobile Application\\MobileBill_"+month+"_"+year+".pdf");
+		
+		InputStream inputStream= Thread.currentThread().getContextClassLoader().getResourceAsStream("pdfFiles/MobileBill_"+month+"_"+year+".pdf");
 		return inputStream;
 	}
 
