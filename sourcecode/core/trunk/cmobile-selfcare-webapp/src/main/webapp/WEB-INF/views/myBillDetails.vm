@@ -1,0 +1,52 @@
+<head>
+<title>My Bill</title>
+</head>
+<html>
+<body>
+<h1>My Bill Details</h1>
+
+<table>
+	<tr>
+		<td>
+			
+			#if($myBillVO.lastBillFlag)
+               <hr/>
+			   <div>
+                    <b>Last Bill</b>
+					<br>$myBillVO.lastBill
+					<br>You were billed on $myBillVO.lastBillDate
+					<br>Payment due on $myBillVO.lastBillDueDate
+    			</div>
+            #end
+    		
+			#if($myBillVO.lastPaymentFlag)
+				<hr/>
+               <div>
+                    <br><b>Last Payment</b>
+					<br>$myBillVO.lastPayment
+					<br>Payment received on $myBillVO.lastPaymentDate
+    			</div>
+			#end
+			
+			#if($myBillVO.recentChargesFlag)
+               <hr/>
+			   <div>
+                    <br><b>Recent Charges</b>
+					<br>$myBillVO.recentCharges
+					<br>Your next bill date is $myBillVO.nextBillDate
+    			</div>
+			#end
+			
+			#if($myBillVO.makePaymentFlag)
+				<hr/>
+               <div>
+                    <br><b>Make Payment</b>
+    			</div>
+			#end
+			<hr/>
+		</td>
+    </tr>
+	
+</table>
+</body>
+</html>

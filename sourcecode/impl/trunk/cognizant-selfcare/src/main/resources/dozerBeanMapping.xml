@@ -11,11 +11,7 @@ http://dozer.sourceforge.net/schema/beanmapping.xsd">
 		<class-b>com.cognizant.cmobile.api.model.BillingVO</class-b>
 	</mapping>
 	<mapping>
-		<class-a>com.cognizant.cmobile.impl.model.Plan</class-a>
-		<class-b>com.cognizant.cmobile.api.model.PlanVO</class-b>
-	</mapping>
-	<mapping>
-		<class-a>com.cognizant.cmobile.impl.model.PlanFeature</class-a>
-		<class-b>com.cognizant.cmobile.api.model.PlanFeatureVO</class-b>
+		<class-a>com.cognizant.cmobile.impl.model.OtherNetworkConsumer</class-a>
+		<class-b>com.cognizant.cmobile.api.model.OtherNetworkConsumerVO</class-b>
 	</mapping>
 </mappings>

@@ -13,21 +13,20 @@
 		</td>
 	</tr>
 	<tr>
-		<td> <a href="#springUrl('/bill/lastBill.do')">Last Month Bill</a></td>
-    </tr>
-	<tr>
-		<td> <a href="#springUrl('/bill/unbilledUsage.do')">Unbilled Usage</a></td>
+		<td> <a href="#springUrl('/myBillDetails.do')">My Bill</a></td>
     </tr>
 	<tr>
 		<td> <a href="#springUrl('/usageStatistics.do')">Usage Statistics</a></td>
     </tr>
-    <tr>
+	<tr>
+		<td> <a href="#springUrl('/otherNetworkConsumers.do')">Offers</a></td>
+    </tr>
+	<tr>
 		<td> <a href="#springUrl('/plans.do')">Plan Details</a></td>
     </tr>
 	<tr>
 		<td> <a href="#springUrl('/logout.do')">Logout</a></td>
     </tr>
-	
 </table>
 </body>
 </html>

@@ -9,6 +9,9 @@
 		<security:intercept-url pattern="/usageStatistics.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/billingHistoryChart.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/minuteDataUsageChart.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/myBillDetails.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/otherNetworkConsumers.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/monthlyItemisedBill/*/*.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/bill/*.do" access="isAuthenticated()" />
 
 		<security:form-login login-page='/login.do' login-processing-url="/jspring_security_check" authentication-failure-url="/login.do?error=1" default-target-url="/" authentication-success-handler-ref="customAuthenticationSuccessHandler"/>

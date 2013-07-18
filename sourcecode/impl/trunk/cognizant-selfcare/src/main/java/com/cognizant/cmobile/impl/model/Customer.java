@@ -44,5 +44,5 @@ public class Customer {
 	public void setMobile(long mobile) {
 		this.mobile = mobile;
 	}
-	
+
 }

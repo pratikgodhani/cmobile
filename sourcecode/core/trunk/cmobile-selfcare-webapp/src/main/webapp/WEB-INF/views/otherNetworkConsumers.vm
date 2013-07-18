@@ -1,0 +1,44 @@
+<head>
+<title>Offers</title>
+</head>
+<html>
+<body>
+<h1>Other Network Consumers Details</h1>
+
+<table>
+	<tr>
+		<td>
+            <font size="5" color="blue">Invite below other network consumers and grab offers.</font>
+			<hr/>
+			<div>
+                <b>Top 3 called consumers from other network.</b>
+				#foreach( $otherNetworkMobileNumber in $otherNetworkConsumerVO.otherNetworkMobile )
+					<br><a href="#" style="text-decoration:none;" onclick="alert('Message sent');"><img src="resources/images/shaking-hands.jpg" height="25" style="border:none;" title="Invite"/>$otherNetworkMobileNumber </a>
+				#end
+			</div>
+			<div>
+    			#if($offerForInvitor.size() > 0)
+					<hr/>
+                    <br><font size="4" color="red">Offers for Invitor</font>
+    				#foreach( $offer in $offerForInvitor )
+    					<br><li>$offer</li>
+    				#end
+    			#end
+            </div>
+
+			<div>
+				#if($offerForInvitee.size() > 0)
+					<hr/>
+                    <br><font size="4" color="red">Offers for Invitee</font>
+    				#foreach( $offer in $offerForInvitee )
+    					<br><li>$offer</li>
+    				#end
+				#end
+            </div>
+			<hr/>
+		</td>
+    </tr>
+	
+</table>
+</body>
+</html>

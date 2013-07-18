@@ -7,11 +7,15 @@
 		<script src="resources/jquery-1.9.1.js" type="text/javascript"></script>
 		<script type="text/javascript">
 		
+	var durationData = new Array();
+	var minutesData = new Array();
+	var usageData = new Array();
+	var monthArray = new Array();
+	var yearArray = new Array();
+		
 	$(function () {
-		var durationData = new Array();
-		var minutesData = new Array();
-		var usageData = new Array();
-		var form = $('#billingHistoryChart');
+		
+		var form = $('#minuteDataUsageChartFrm');
 	    #[[$]]#.ajax({
         	type: "POST",
 			url: form.attr( 'action' ),
@@ -19,11 +23,13 @@
         	success: function(response){
     			if(response.status == 'Pass'){
     				for(i =0 ; i < response.result.length ; i++){
-						durationData[i] = response.result[i].month;
+						durationData[i] = response.result[i].month+'-'+response.result[i].year;
 						minutesData[i] = response.result[i].minutes;
 						usageData[i] = response.result[i].totalUsage;
+						monthArray[i] = response.result[i].month;
+						yearArray[i] = response.result[i].year;
          			}
-					generateChart(durationData, minutesData, usageData);
+					generateChart();
                  }else{
                      $('#error').html("Please correct following errors: " + response.result);
                  }
@@ -35,7 +41,7 @@
     	});
     });
     
-	function generateChart(durationData, minutesData, usageData)
+	function generateChart()
 	{
 		$('#container').highcharts({
             chart: {
@@ -78,6 +84,17 @@
                 y: 100,
                 borderWidth: 0
             },
+			plotOptions: {
+				series: {
+                    point: {
+                        events: {
+                            click:function() {
+								openItemisedBil(monthArray[this.x], yearArray[this.x])
+                            }
+                        }
+                    }
+                }
+            },
             series: [{
                 name: 'Minutes',
                 data: minutesData,
@@ -93,7 +110,11 @@
             }]
         });
 	}
-	
+	function openItemisedBil(month, year){
+		var hidden = $('#monthlyBillURL');
+		var url = hidden.attr( 'value' )+'/'+month+'/'+year+'.do';
+		window.open(url, 'Itemised Bill', 'width=800, height=600, status=yes, menubar=no, scrollbars=yes, resizable=yes');
+	} 
 		</script>
 	</head>
 	<body>
@@ -103,6 +124,7 @@
 <div id="container" style="min-width: 600px; height: 600px; margin: 0 auto"></div>
 
 	</body>
-<form id="billingHistoryChart" action="#springUrl('/billingHistoryData.do')" method="post">
+<form id="minuteDataUsageChartFrm" action="#springUrl('/billingHistoryData.do')" method="post">
+	<input type="hidden" id="monthlyBillURL" value="#springUrl('/monthlyItemisedBill')" />
 </form>
 </html>

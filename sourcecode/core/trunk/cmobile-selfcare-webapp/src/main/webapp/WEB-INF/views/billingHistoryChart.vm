@@ -6,11 +6,13 @@
 
 		<script src="resources/jquery-1.9.1.js" type="text/javascript"></script>
 		<script type="text/javascript">
-		
+	var xAxisData = new Array();
+	var yAxisData = new Array();
+	var monthArray = new Array();
+	var yearArray = new Array();
 	$(function () {
-		var xAxisData = new Array();
-		var yAxisData = new Array();
-		var form = $('#billingHistoryChart');
+		
+		var form = $('#billingHistoryChartFrm');
 	    #[[$]]#.ajax({
         	type: "POST",
 			url: form.attr( 'action' ),
@@ -18,10 +20,12 @@
         	success: function(response){
     			if(response.status == 'Pass'){
     				for(i =0 ; i < response.result.length ; i++){
-						xAxisData[i] = response.result[i].month;
+						xAxisData[i] = response.result[i].month+'-'+response.result[i].year;
 						yAxisData[i] = response.result[i].billAmount;
+						monthArray[i] = response.result[i].month;
+						yearArray[i] = response.result[i].year;
          			}
-					generateChart(xAxisData, yAxisData);
+					generateChart();
                  }else{
                      $('#error').html("Please correct following errors: " + response.result);
                  }
@@ -33,7 +37,7 @@
     	});
     });
     
-	function generateChart(xAxisData, yAxisData)
+	function generateChart()
 	{
 		$('#container').highcharts({
             chart: {
@@ -55,27 +59,38 @@
                 }
             },
             tooltip: {
-                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f} pound</b></td></tr>',
-                footerFormat: '</table>',
-                shared: true,
-                useHTML: true
+                shared: true
             },
             plotOptions: {
                 column: {
                     pointPadding: 0.2,
                     borderWidth: 0
+                },
+				series: {
+                    point: {
+                        events: {
+                            click:function() {
+								openItemisedBil(monthArray[this.x], yearArray[this.x])
+                            }
+                        }
+                    }
                 }
             },
             series: [{
                 name: 'Bill Amount',
-                data: yAxisData
-    
+                data: yAxisData,
+				tooltip: {
+                    valueSuffix: ' Pounds'
+                }
             }]
         });
 	}
 	
+	function openItemisedBil(month, year){
+		var hidden = $('#monthlyBillURL');
+		var url = hidden.attr( 'value' )+'/'+month+'/'+year+'.do';
+		window.open(url, 'Itemised Bill', 'width=800, height=600, status=yes, menubar=no, scrollbars=yes, resizable=yes');
+	} 
 		</script>
 	</head>
 	<body>
@@ -85,6 +100,7 @@
 <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
 
 	</body>
-<form id="billingHistoryChart" action="#springUrl('/billingHistoryData.do')" method="post">
+<form id="billingHistoryChartFrm" action="#springUrl('/billingHistoryData.do')" method="post">
+	<input type="hidden" id="monthlyBillURL" value="#springUrl('/monthlyItemisedBill')" />
 </form>
 </html>
