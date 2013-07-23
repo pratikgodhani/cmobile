@@ -1,39 +1,40 @@
 <html>
 <head>
     <title>Login </title>
-	<link type="text/css" rel="stylesheet" href="resources/bootstrap/css/bootstrap.css"/>
-	<link type="text/css" rel="stylesheet" href="resources/bootstrap/css/bootstrap-responsive.css"/>
+	<link href="resources/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="resources/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="resources/css/login.css" rel="stylesheet" type="text/css" />
 </head>
-<body>
-<form name="registration" id="registration" method="POST" action="jspring_security_check" class="well span6">
-	<table cellspacing="0" cellpadding="0" border="0" align="center">
-		<tbody>
-		<tr>
-			<td align="right">
-                <label>User Name&nbsp;</label>
-			</td>
-			<td>
-				<input type="text" name="j_username" id="j_username" class="span3" placeholder="Enter User Name...."/>
-			</td>
-		</tr>
-		<tr>
-			<td align="right">
-                <label>Password&nbsp;</label>
-			</td>
-			<td>
-				<input type="password" name="j_password" id="j_password" class="span3" placeholder="Enter Password...."/>
-			</td>
-		</tr>
-		<tr align="center">
-			<td colspan="2">
-				<input type="submit" name="login" value="Login" class="btn btn-primary">
-				<input type="reset" name="cancel" value="Clear" class="btn btn-primary">
-			</td>
-		</tr>
-		
-		</tbody>
-	</table>
-
-</form>
-</body>
+    <body class="body">
+      	<header class="header">
+        </header>
+      	<div class="container">
+           <div class="formContainer">
+    		   <h2 class="login-header">Log In</h2>
+                   <form name="registration" id="registration" method="POST" action="jspring_security_check">					
+                    	
+						<div class="input-container">
+                            <div id="user-name" class="clearfix">
+                                 <label for="UserName" id="UserNameLbl">User Name</label>
+                                 <input type="text" name="j_username" id="j_username" class="input-text" placeholder="Enter User Name...." />
+                             </div>
+             
+							  <div id="password" class="clearfix">
+                                  <label for="Password" id="PasswordLbl">Password</label>
+                                    <input type="password" name="j_password" id="j_password" class="input-text" placeholder="Enter Password...."/>
+                              </div>
+                         </div>
+                        
+						 <div class="btnContainer clearfix">
+                                    <a id="forgotLink" href="#">Forgotten Login Details?</a>
+                            	<input type="submit" name="login" class="btn" id="btn2" value="Login" />
+                         </div>
+                     </form>
+             </div>
+        </div>
+        
+		<footer class="footer">
+        </footer>
+        <script src="http://code.jquery.com/jquery.js"></script>
+      </body>
 </html>
