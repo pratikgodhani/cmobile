@@ -1,31 +1,33 @@
 <html>
 <head>
     <title>Login </title>
+	<link type="text/css" rel="stylesheet" href="resources/bootstrap/css/bootstrap.css"/>
+	<link type="text/css" rel="stylesheet" href="resources/bootstrap/css/bootstrap-responsive.css"/>
 </head>
 <body>
-<form name="registration" id="registration" method="POST" action="jspring_security_check">
+<form name="registration" id="registration" method="POST" action="jspring_security_check" class="well span6">
 	<table cellspacing="0" cellpadding="0" border="0" align="center">
 		<tbody>
 		<tr>
-			<td>
-				User Name
+			<td align="right">
+                <label>User Name&nbsp;</label>
 			</td>
 			<td>
-				<input type="text" name="j_username" id="j_username"/>
+				<input type="text" name="j_username" id="j_username" class="span3" placeholder="Enter User Name...."/>
 			</td>
 		</tr>
 		<tr>
-			<td>
-				Password
+			<td align="right">
+                <label>Password&nbsp;</label>
 			</td>
 			<td>
-				<input type="password" name="j_password" id="j_password"/>
+				<input type="password" name="j_password" id="j_password" class="span3" placeholder="Enter Password...."/>
 			</td>
 		</tr>
 		<tr align="center">
 			<td colspan="2">
-				<input type="submit" name="login" value="Login">
-				<input type="reset" name="cancel" value="Cancel">
+				<input type="submit" name="login" value="Login" class="btn btn-primary">
+				<input type="reset" name="cancel" value="Clear" class="btn btn-primary">
 			</td>
 		</tr>
 		

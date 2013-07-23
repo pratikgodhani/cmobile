@@ -1,17 +1,23 @@
 <head>
 <title>Usage Statistics</title>
+<link type="text/css" rel="stylesheet" href="resources/bootstrap/css/bootstrap.css"/>
 </head>
 <html>
 <body>
-<h1>Usage Statistics</h1>
+	<ul class="nav nav-pills nav-stacked span">
+		<li><a href="#springUrl('/home.do')"><i class="icon-home icon-black"></i>Home</a></li>
+        <li><a href="#springUrl('/myBillDetails.do')">My Bill</a></li>
+        <li class="active"><a href="#springUrl('/usageStatistics.do')">Usage Statistics</a></li>
+        <li><a href="#springUrl('/otherNetworkConsumers.do')">Offers</a></li>
+        <li><a href="#springUrl('/plans.do')">Plan Details</a></li>
+        <li><a href="#springUrl('/logout.do')"><i class="icon-off icon-black"></i>Logout</a></li>
+    </ul>
+	
+	<h3>Usage Statistics</h3>
 
-<table >
-	<tr>
-		<td> <a href="#springUrl('/billingHistoryChart.do')">Billing History</a></td>
-    </tr>
-	<tr>
-		<td> <a href="#springUrl('/minuteDataUsageChart.do')">Minutes & Data Usage</a></td>
-    </tr>
-</table>
+	<ul class="nav nav-tabs span">
+		<li><a href="#springUrl('/billingHistoryChart.do')">Billing History</a></li>
+        <li><a href="#springUrl('/minuteDataUsageChart.do')">Minutes & Data Usage</a></li>
+    </ul>
 </body>
 </html>

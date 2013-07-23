@@ -1,52 +1,77 @@
+<!--myBillDetails.vm start-->
+<!DOCTYPE html>
 <head>
 <title>My Bill</title>
+<link type="text/css" rel="stylesheet" href="resources/bootstrap/css/bootstrap.css"/>
+<link type="text/css" rel="stylesheet" href="resources/bootstrap/css/bootstrap-responsive.css"/>
 </head>
-<html>
+<html lang="en">
 <body>
-<h1>My Bill Details</h1>
+<script src="resources/jquery-1.9.1.js"></script>
+<script src="resources/bootstrap/js/bootstrap.js"></script>
+<script src="resources/bootstrap/js/collapse.js"></script>
+	<ul class="nav nav-pills nav-stacked span2">
+		<li><a href="#springUrl('/home.do')"><i class="icon-home icon-black"></i>Home</a></li>
+        <li class="active"><a href="#springUrl('/myBillDetails.do')">My Bill</a></li>
+        <li><a href="#springUrl('/usageStatistics.do')">Usage Statistics</a></li>
+        <li><a href="#springUrl('/otherNetworkConsumers.do')">Offers</a></li>
+        <li><a href="#springUrl('/plans.do')">Plan Details</a></li>
+        <li><a href="#springUrl('/logout.do')"><i class="icon-off icon-black"></i>Logout</a></li>
+    </ul>
+    <div class="accordion span6" id="accordion2">
+		My Bill Details
+        #if($myBillVO.lastBillFlag)
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                    Last Bill
+                    </a>
+                </div>
+                <div id="collapseOne" class="accordion-body collapse in">
+					<div class="accordion-inner">
+                        $myBillVO.lastBill
+                        <br>You were billed on $myBillVO.lastBillDate
+                        <br>Payment due on $myBillVO.lastBillDueDate
+                    </div>
+                </div>
+            </div>
+        #end
+      
+        #if($myBillVO.recentChargesFlag)
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                    Recent Charges
+                    </a>
+                </div>
+                <div id="collapseTwo" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        $myBillVO.recentCharges
+                        <br>Your next bill date is $myBillVO.nextBillDate
+                    </div>
+                </div>
+            </div>
+        #end
+      
+        #if($myBillVO.lastPaymentFlag)
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                    Last Payment
+                    </a>
+                </div>
+                <div id="collapseThree" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        $myBillVO.lastPayment
+                        <br>Payment received on $myBillVO.lastPaymentDate
+                    </div>
+                </div>
+            </div>
+        #end
+    
+    </div>
 
-<table>
-	<tr>
-		<td>
-			
-			#if($myBillVO.lastBillFlag)
-               <hr/>
-			   <div>
-                    <b>Last Bill</b>
-					<br>$myBillVO.lastBill
-					<br>You were billed on $myBillVO.lastBillDate
-					<br>Payment due on $myBillVO.lastBillDueDate
-    			</div>
-            #end
-    		
-			#if($myBillVO.lastPaymentFlag)
-				<hr/>
-               <div>
-                    <br><b>Last Payment</b>
-					<br>$myBillVO.lastPayment
-					<br>Payment received on $myBillVO.lastPaymentDate
-    			</div>
-			#end
-			
-			#if($myBillVO.recentChargesFlag)
-               <hr/>
-			   <div>
-                    <br><b>Recent Charges</b>
-					<br>$myBillVO.recentCharges
-					<br>Your next bill date is $myBillVO.nextBillDate
-    			</div>
-			#end
-			
-			#if($myBillVO.makePaymentFlag)
-				<hr/>
-               <div>
-                    <br><b>Make Payment</b>
-    			</div>
-			#end
-			<hr/>
-		</td>
-    </tr>
-	
-</table>
+
 </body>
 </html>
+<!--myBillDetails.vm end-->

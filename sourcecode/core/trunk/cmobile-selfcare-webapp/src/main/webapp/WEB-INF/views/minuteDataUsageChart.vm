@@ -116,15 +116,25 @@
 		window.open(url, 'Itemised Bill', 'width=800, height=600, status=yes, menubar=no, scrollbars=yes, resizable=yes');
 	} 
 		</script>
+		<link type="text/css" rel="stylesheet" href="resources/bootstrap/css/bootstrap.css"/>
 	</head>
 	<body>
-<script src="resources/highcharts.js"></script>
-<script src="resources/modules/exporting.js"></script>
-<div id="error" style="color: green;"></div>
-<div id="container" style="min-width: 600px; height: 600px; margin: 0 auto"></div>
-
-	</body>
-<form id="minuteDataUsageChartFrm" action="#springUrl('/billingHistoryData.do')" method="post">
-	<input type="hidden" id="monthlyBillURL" value="#springUrl('/monthlyItemisedBill')" />
-</form>
+    <script src="resources/highcharts.js"></script>
+    <script src="resources/modules/exporting.js"></script>
+	<ul class="nav nav-pills nav-stacked span">
+		<li><a href="#springUrl('/home.do')"><i class="icon-home icon-black"></i>Home</a></li>
+        <li><a href="#springUrl('/myBillDetails.do')">My Bill</a></li>
+        <li class="active"><a href="#springUrl('/usageStatistics.do')">Usage Statistics</a></li>
+        <li><a href="#springUrl('/otherNetworkConsumers.do')">Offers</a></li>
+        <li><a href="#springUrl('/plans.do')">Plan Details</a></li>
+        <li><a href="#springUrl('/logout.do')"><i class="icon-off icon-black" ></i>Logout</a></li>
+    </ul>
+    
+    
+    <form id="minuteDataUsageChartFrm" action="#springUrl('/billingHistoryData.do')" method="post">
+    	<div id="error" style="color: green;"></div>
+		<div id="container" style="min-width: 600px; max-width: 800px; height: 600px; margin: 0 auto"></div>
+		<input type="hidden" id="monthlyBillURL" value="#springUrl('/monthlyItemisedBill')" />
+    </form>
+</body>
 </html>
