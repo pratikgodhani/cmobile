@@ -1,0 +1,62 @@
+@charset "utf-8";
+/* CSS Document */
+/*shouvik Bhuiyan(334171)*/
+/*22-Jul-2013*/
+
+@media only screen and (max-width : 750px) and (min-width : 150px){
+.body{
+	font-size:100%;
+}
+.container{
+width:98%;
+box-shadow:5px 5px 45px #9999;
+margin: auto;
+}
+.heading-titles{
+   font-size: 15px;
+   font-weight: bold;
+}
+.subheading-titles{
+   font-size: 10px;
+}
+.iconImg{
+   position: relative;
+   width: 70%;
+   height: 40%;
+   margin: 10%;
+}
+.row{
+   height: 70px;
+}
+.section-wrapper{
+   width: 100%;
+   margin:0;
+   padding: 0;
+}
+.sec1{
+   width:45%;
+   float: left;
+  // background-color: blue;
+}
+.sec2{
+   width:54.6%; /*88%*/
+   float: left;
+  // background-color: red;
+}
+.result{
+}
+.result-units{
+	font-size: 10px;
+}
+.more-link{
+	font-size: 10px;
+	float: none;
+}
+#myChart{
+   padding:0;
+}
+#billGraph{
+   padding: 0;
+}
+
+}

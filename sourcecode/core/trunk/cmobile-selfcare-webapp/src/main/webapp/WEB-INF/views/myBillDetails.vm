@@ -1,77 +1,98 @@
 <!--myBillDetails.vm start-->
 <!DOCTYPE html>
 <head>
-<title>My Bill</title>
-<link type="text/css" rel="stylesheet" href="resources/bootstrap/css/bootstrap.css"/>
-<link type="text/css" rel="stylesheet" href="resources/bootstrap/css/bootstrap-responsive.css"/>
+<title>My Bill Details</title>
+	<link type="text/css" rel="stylesheet" href="resources/bootstrap/css/bootstrap.css"/>
+	<link type="text/css" rel="stylesheet" href="resources/bootstrap/css/bootstrap-responsive.css"/>
+    <link href="resources/css/reset-bill.css" rel="stylesheet" type="text/css" />
+    <link href="resources/css/style-bill.css" rel="stylesheet" type="text/css" />
+    <link href="resources/css/mobile.css" rel="stylesheet" type="text/css" />
+    <link href="resources/css/tab.css" rel="stylesheet" type="text/css" />
 </head>
+
 <html lang="en">
-<body>
-<script src="resources/jquery-1.9.1.js"></script>
-<script src="resources/bootstrap/js/bootstrap.js"></script>
-<script src="resources/bootstrap/js/collapse.js"></script>
-	<ul class="nav nav-pills nav-stacked span2">
-		<li><a href="#springUrl('/home.do')"><i class="icon-home icon-black"></i>Home</a></li>
-        <li class="active"><a href="#springUrl('/myBillDetails.do')">My Bill</a></li>
-        <li><a href="#springUrl('/usageStatistics.do')">Usage Statistics</a></li>
-        <li><a href="#springUrl('/otherNetworkConsumers.do')">Offers</a></li>
-        <li><a href="#springUrl('/plans.do')">Plan Details</a></li>
-        <li><a href="#springUrl('/logout.do')"><i class="icon-off icon-black"></i>Logout</a></li>
-    </ul>
-    <div class="accordion span6" id="accordion2">
-		My Bill Details
-        #if($myBillVO.lastBillFlag)
-            <div class="accordion-group">
-                <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                    Last Bill
-                    </a>
-                </div>
-                <div id="collapseOne" class="accordion-body collapse in">
-					<div class="accordion-inner">
-                        $myBillVO.lastBill
-                        <br>You were billed on $myBillVO.lastBillDate
-                        <br>Payment due on $myBillVO.lastBillDueDate
-                    </div>
-                </div>
-            </div>
-        #end
-      
-        #if($myBillVO.recentChargesFlag)
-            <div class="accordion-group">
-                <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                    Recent Charges
-                    </a>
-                </div>
-                <div id="collapseTwo" class="accordion-body collapse">
-                    <div class="accordion-inner">
-                        $myBillVO.recentCharges
-                        <br>Your next bill date is $myBillVO.nextBillDate
-                    </div>
-                </div>
-            </div>
-        #end
-      
-        #if($myBillVO.lastPaymentFlag)
-            <div class="accordion-group">
-                <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-                    Last Payment
-                    </a>
-                </div>
-                <div id="collapseThree" class="accordion-body collapse">
-                    <div class="accordion-inner">
-                        $myBillVO.lastPayment
-                        <br>Payment received on $myBillVO.lastPaymentDate
-                    </div>
-                </div>
-            </div>
-        #end
-    
+	<body class="body">
+		<script src="resources/jquery-1.9.1.js"></script>
+		<script src="resources/js/main.js"></script>
+		<script src="resources/js/chart.js"></script>
+		
+    <header class="header">
+    </header>
+      <div class="container">
+		
+		#if($myBillVO.lastBillFlag)
+			<div class="row1 row clearfix">
+				<div class="sec1">
+					<img class="iconImg" src="resources/images/mobile_phone.png" />
+				</div>
+			
+				<div class="sec2">
+					<div class="section-wrapper">
+						<h2 class="heading-titles">Last Bill</h2>
+						<dl class="dl-horizontal">
+                            <dt>Bill Amount</dt>
+                            <dd>$myBillVO.lastBill $</dd>
+							<dt>You were billed on</dt>
+                            <dd>$myBillVO.lastBillDate</dd>
+							<dt>Payment due on</dt>
+                            <dd>$myBillVO.lastBillDueDate</dd>
+                         </dl>
+						<a class="more-link" href="#">More Details</a>
+					</div>
+				</div>
+			 </div>
+		#end
+		
+		 #if($myBillVO.recentChargesFlag)
+		<div class="row2 row clearfix">
+			<div class="sec1">
+				<img class="iconImg" src="resources/images/mobile_phone.png" />				
+			</div>
+			
+			<div class="sec2">
+		         <div class="section-wrapper">
+					<h2 class="heading-titles">Your Latest Bill is</h2>
+					<label class="result">$myBillVO.recentCharges</label>
+					<h2 class="result-units">$</h2>
+					<a class="more-link" href="#">More Details</a>
+			      </div>
+			</div>
+		</div>
+		#end 
+		
+		#if($myBillVO.lastPaymentFlag)
+		<div class="row3 row clearfix">
+			<div class="sec1">
+				<canvas id="billGraph" width="400" height="400"></canvas>
+			</div>
+			
+			<div class="sec2">
+			    <div class="section-wrapper">
+					<h2 class="heading-titles">Your Next Bill date is </h2>
+					<label class="result">$myBillVO.nextBillDate</label>
+					<a class="more-link" href="#">More Details</a>
+			    </div>
+			</div>
+		</div>
+		#end 
+		
+		<div class="row4 row clearfix">
+			<div class="sec1">
+				<canvas id="myChart" width="400" height="400"></canvas>
+			</div>
+			<div class="sec2">
+			    <div class="section-wrapper">
+				<h2 class="heading-titles">UK Data</h2>
+				<h2 class="subheading-titles">remaining</h2>
+				<label class="result">$myBillVO.lastPaymentDate</label>
+				<h2 class="result-units">MB</h2>
+				<a class="more-link" href="#">More Details</a>
+			    </div>
+			</div>
+		</div>
     </div>
-
-
+    <footer class="footer">
+    </footer>
 </body>
 </html>
 <!--myBillDetails.vm end-->
