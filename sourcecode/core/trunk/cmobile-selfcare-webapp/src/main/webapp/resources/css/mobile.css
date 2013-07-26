@@ -1,16 +1,47 @@
 @charset "utf-8";
 /* CSS Document */
-/*shouvik Bhuiyan(334171)*/
-/*22-Jul-2013*/
 
 @media only screen and (max-width : 750px) and (min-width : 150px){
-.body{
+body{
 	font-size:100%;
+	padding: 0;
+	margin: 0;
 }
-.container{
+.header{
+	height:20%;
+}
+.footer{
+	height:8%;
+}
+#formConatiner{
+width:100%;
+}
+#btn-login{
+	width: 100%;
+       float: none;
+}
+#button-div{
+   width: 100%;
+   margin: 0;
+}
+.forgot-link{
+   width: 100%;
+   float: none;
+   display: block;
+   padding-top: 10px;
+   text-align: center;
+}
+
+
+
+/*page 2*/
+
+#data-conaitner{
 width:98%;
 box-shadow:5px 5px 45px #9999;
 margin: auto;
+padding: 0;
+padding-bottom: 100px;
 }
 .heading-titles{
    font-size: 15px;

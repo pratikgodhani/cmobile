@@ -15,7 +15,7 @@
 		<security:intercept-url pattern="/bill/*.do" access="isAuthenticated()" />
 
 		<security:form-login login-page='/login.do' login-processing-url="/jspring_security_check" authentication-failure-url="/login.do?error=1" default-target-url="/" authentication-success-handler-ref="customAuthenticationSuccessHandler"/>
-		<security:logout invalidate-session="true" logout-url="/logout.do" logout-success-url="/login.do" />
+		<security:logout invalidate-session="true" logout-url="/logout.do" logout-success-url="/login.do" delete-cookies="JSESSIONID"/>
 	</security:http>
 	
 	<security:authentication-manager >

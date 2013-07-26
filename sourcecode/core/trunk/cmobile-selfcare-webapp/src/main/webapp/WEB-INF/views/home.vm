@@ -1,50 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Home</title>
-<link type="text/css" rel="stylesheet" href="resources/bootstrap/css/bootstrap.css"/>
-<link type="text/css" rel="stylesheet" href="resources/bootstrap/css/bootstrap-responsive.css"/>
-
-<style >
-#wrap {
-    height: auto !important;
-    margin: 0 auto;
-    min-height: 95%;
-}
-#footer {
-    height: 5%;
-}
-#footer {
-    background-color: #F5F5F5;
-}
-#footer {
-    margin-left: -1%;
-    margin-right: -1%;
-    padding-left: 1%;
-    padding-right: 1%;
-}
-</style>
-</head>
-<html>
-<body>
-	<div id="wrap">
-        <ul class="nav nav-pills nav-stacked span">
-    		<li class="active"><a href="#springUrl('/home.do')"><i class="icon-home icon-black"></i>Home</a></li>
-            <li><a href="#springUrl('/myBillDetails.do')">My Bill</a></li>
-            <li><a href="#springUrl('/usageStatistics.do')">Usage Statistics</a></li>
-            <li><a href="#springUrl('/otherNetworkConsumers.do')">Offers</a></li>
-            <li><a href="#springUrl('/plans.do')">Plan Details</a></li>
-            <li><a href="#springUrl('/logout.do')"><i class="icon-off icon-black"></i>Logout</a></li>
-        </ul>
-    	
-    	Welcome $!customer.username ....  This is a Secured Home page..You must be authorized before you can see this.
-    	Your registerd number is $!customer.mobile ....
-    </div>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Home</title>
+    
+	#parse("css.vm")
 	
-	<div id="footer">
-      <div class="container">
-		<center>
-			<p class="muted credit">Copyrights (Cognizant Technology Solutions) ..........</p>
-        </center>
-      </div>
+	#parse("Javascript.vm")
+</head>
+  <body>
+    <div class="wrapper">
+		<header class="header">
+			#parse("menu.vm")
+		</header>
+		<div class="container-fluid" style="min-height:85.5%">
+		    <div class="row-fluid" id="formConatiner">
+			    <div class="span12">
+				    <div class="well">
+						<h4>Account Details</h4>
+						<div class="accordion">
+                			<div class="accordion-group">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                                    Summary of your account
+                                    </a>
+                                </div>
+                                <div id="collapseOne" class="accordion-body collapse in">
+                					<div class="accordion-inner">
+                                        <table class="table table-striped">
+                							<tbody>
+                                                <tr>
+                                                	<td>Name</td>
+                                                	<td>$!customer.username</td>
+                                                </tr>
+                								<tr>
+                                                	<td>Mobile</td>
+                                                	<td>$!customer.mobile</td>
+                                                </tr>
+                								<tr>
+                                                	<td>Account No</td>
+                                                	<td>1212121</td>
+                                                </tr>
+                								<tr>
+                                                	<td>Billing Address</td>
+                                                	<td>Pune, India</td>
+                                                </tr>
+                								<tr>
+                                                	<td>Email Address</td>
+                                                	<td>abc@xyz.com</td>
+                                                </tr>
+                								<tr>
+                                                	<td>Activation Date</td>
+                                                	<td>25/08/2010</td>
+                                                </tr>
+                								<tr>
+                                                	<td>Billing Date</td>
+                                                	<td>25 of every month</td>
+                                                </tr>
+                							</tbody>
+                						</table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+				    </div>
+			    </div>
+		     </div>
+		</div>
+		<footer class="footer">
+			#parse("footer.vm")
+		</footer>
     </div>
-</body>
+  </body>
 </html>

@@ -31,7 +31,6 @@ public class CustomAuthenticationSuccessHandler extends
 		SessionCredential sessionCredential = sessionCredentialService.saveSessionCredential(authentication
 				.getPrincipal().toString());
 		Cookie cookie = new Cookie("CMOBILE_SELFCARE_USER", sessionCredential.getId().toString());
-		//cookie.setMaxAge(500000000);
 		response.addCookie(cookie);
 
 		super.onAuthenticationSuccess(request, response, authentication);

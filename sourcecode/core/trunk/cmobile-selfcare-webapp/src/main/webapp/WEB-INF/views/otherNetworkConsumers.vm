@@ -1,73 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Offers</title>
-<link type="text/css" rel="stylesheet" href="resources/bootstrap/css/bootstrap.css"/>
-<link type="text/css" rel="stylesheet" href="resources/bootstrap/css/bootstrap-responsive.css"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Offers</title>
+    
+	#parse("css.vm")
+	
+	#parse("Javascript.vm")
 </head>
-<html>
-<body>
-<script src="resources/jquery-1.9.1.js"></script>
-<script src="resources/bootstrap/js/bootstrap.js"></script>
-<script src="resources/bootstrap/js/collapse.js"></script>
-
-	<ul class="nav nav-pills nav-stacked span">
-		<li><a href="#springUrl('/home.do')"><i class="icon-home icon-black"></i>Home</a></li>
-        <li><a href="#springUrl('/myBillDetails.do')">My Bill</a></li>
-        <li><a href="#springUrl('/usageStatistics.do')">Usage Statistics</a></li>
-        <li class="active"><a href="#springUrl('/otherNetworkConsumers.do')">Offers</a></li>
-        <li><a href="#springUrl('/plans.do')">Plan Details</a></li>
-        <li><a href="#springUrl('/logout.do')"><i class="icon-off icon-black"></i>Logout</a></li>
-    </ul>
-	<br/>
-    <div class="accordion span6" id="accordion2">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseZero">
-					Other Network Consumers Detail
-				</a>
-            </div>
-            <div id="collapseZero" class="accordion-body collapse in">
-				<div class="accordion-inner">
-                    <ul class="nav nav-pills span">
-                	#foreach( $otherNetworkMobileNumber in $otherNetworkConsumerVO.otherNetworkMobile )
-                        <li><a href="#" style="text-decoration:none;" onclick="alert('Message sent');" title="Invite">$otherNetworkMobileNumber </a></li>
-                	#end
-                    </ul>
-                </div>
-            </div>
-        </div>
-		#if($offerForInvitor.size() > 0)
-            <div class="accordion-group">
-                <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                    Offers for Invitor
-                    </a>
-                </div>
-                <div id="collapseOne" class="accordion-body collapse">
-					<div class="accordion-inner">
-                        #foreach( $offer in $offerForInvitor )
-							<br><li>$offer</li>
-						#end
-                    </div>
-                </div>
-            </div>
-        #end
-      
-		#if($offerForInvitee.size() > 0)
-            <div class="accordion-group">
-                <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-                    Offers for Invitee
-                    </a>
-                </div>
-                <div id="collapseThree" class="accordion-body collapse">
-                    <div class="accordion-inner">
-						#foreach( $offer in $offerForInvitee )
-        					<br><li>$offer</li>
-        				#end
-                    </div>
-                </div>
-            </div>
-		#end
+  <body>
+    <div class="wrapper">
+		<header class="header">
+			#parse("menu.vm")
+		</header>
+		<div class="container-fluid">
+		    <div class="row-fluid" id="formConatiner">
+			    <div class="span12">
+				    <div class="well">
+						<h4>Offers</h4>
+						<div class="accordion" id="accordion2">
+                    		<div class="accordion-group">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                                    Your Top 3 other network call numbers
+                                    </a>
+                                </div>
+                                <div id="collapseOne" class="accordion-body collapse in">
+                    				<div class="accordion-inner">
+                                        <p>
+                                    	#foreach( $otherNetworkMobileNumber in $otherNetworkConsumerVO.otherNetworkMobile )
+                                            <i class="icon-arrow-right"></i>$otherNetworkMobileNumber<br/>
+                						#end
+                						<br/>Get your friends on our network and reduce your monthly bill!
+                                        <br/>Earn one time 5% discount on every successful referral!
+                                        <br/><b>Promo code : A6109</b></p>
+                                    </div>
+                                </div>
+                            </div>
+                		</div>
+				    </div>
+			    </div>
+		     </div>
+		</div>
+		<footer class="footer">
+			#parse("footer.vm")
+		</footer>
     </div>
-</body>
+  </body>
 </html>

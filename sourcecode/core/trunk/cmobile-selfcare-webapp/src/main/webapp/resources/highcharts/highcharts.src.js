@@ -1523,7 +1523,7 @@ defaultOptions = {
 			fontFamily: '"Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif', // default font
 			fontSize: '12px'
 		},
-		backgroundColor: '#FFFFFF',
+		backgroundColor: '#f5f5f5',
 		//plotBackgroundColor: null,
 		plotBorderColor: '#C0C0C0',
 		//plotBorderWidth: 0,

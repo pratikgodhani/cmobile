@@ -1,23 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Usage Statistics</title>
-<link type="text/css" rel="stylesheet" href="resources/bootstrap/css/bootstrap.css"/>
-</head>
-<html>
-<body>
-	<ul class="nav nav-pills nav-stacked span">
-		<li><a href="#springUrl('/home.do')"><i class="icon-home icon-black"></i>Home</a></li>
-        <li><a href="#springUrl('/myBillDetails.do')">My Bill</a></li>
-        <li class="active"><a href="#springUrl('/usageStatistics.do')">Usage Statistics</a></li>
-        <li><a href="#springUrl('/otherNetworkConsumers.do')">Offers</a></li>
-        <li><a href="#springUrl('/plans.do')">Plan Details</a></li>
-        <li><a href="#springUrl('/logout.do')"><i class="icon-off icon-black"></i>Logout</a></li>
-    </ul>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Usage Statistics</title>
+    
+	#parse("css.vm")
 	
-	<h3>Usage Statistics</h3>
-
-	<ul class="nav nav-tabs span">
-		<li><a href="#springUrl('/billingHistoryChart.do')">Billing History</a></li>
-        <li><a href="#springUrl('/minuteDataUsageChart.do')">Minutes & Data Usage</a></li>
-    </ul>
-</body>
+	#parse("Javascript.vm")
+	<script src="resources/highcharts/highcharts.js"></script>
+    <script src="resources/highcharts/modules/exporting.js"></script>
+	<script type="text/javascript">
+	var billAmountData = new Array();
+	var monthArray = new Array();
+	var yearArray = new Array();
+	var durationData = new Array();
+	var minutesData = new Array();
+	var usageData = new Array();
+	$(function () {
+		
+		var form = $('#billingHistoryChartFrm');
+	    #[[$]]#.ajax({
+        	type: "POST",
+			url: form.attr( 'action' ),
+        	data: '',
+        	success: function(response){
+    			if(response.status == 'Pass'){
+    				for(i =0 ; i < response.result.length ; i++){
+						billAmountData[i] = response.result[i].billAmount;
+						
+						durationData[i] = response.result[i].month+'-'+response.result[i].year;
+						minutesData[i] = response.result[i].minutes;
+						usageData[i] = response.result[i].totalUsage;
+						
+						monthArray[i] = response.result[i].month;
+						yearArray[i] = response.result[i].year;
+         			}
+					generateBillingHistoryChart();
+					generateDataUsageChart();
+                 }else{
+                     $('#error').html("Please correct following errors: " + response.result);
+                 }
+				 
+         	},
+         	error: function(e){
+            	alert('Error: ' + e);
+         	}
+    	});
+    });
+    
+	function generateBillingHistoryChart()
+	{
+		$('#billingHistoryContainer').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Billing History'
+            },
+            subtitle: {
+                text: 'Source: cognizant.com'
+            },
+            xAxis: {
+                categories: durationData
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '£ (Pound)'
+                }
+            },
+            tooltip: {
+                shared: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                },
+				series: {
+                    point: {
+                        events: {
+                            click:function() {
+								openItemisedBil(monthArray[this.x], yearArray[this.x])
+                            }
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: 'Bill Amount',
+                data: billAmountData,
+				tooltip: {
+                    valueSuffix: ' £'
+                }
+            }]
+        });
+	}
+	
+	function generateDataUsageChart()
+	{
+		$('#dataUsageContainer').highcharts({
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'Minutes/Data Usage',
+                x: -20
+            },
+            subtitle: {
+                text: 'Source: cognizant.com',
+                x: -20
+            },
+            xAxis: {
+				title: {
+                    text: 'Month'
+                },
+				categories: durationData
+            },
+            yAxis: {
+                title: {
+                    text: 'Minutes/Data Usage'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+				shared: true
+            },
+			plotOptions: {
+				series: {
+                    point: {
+                        events: {
+                            click:function() {
+								openItemisedBil(monthArray[this.x], yearArray[this.x])
+                            }
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: 'Minutes',
+                data: minutesData,
+				tooltip: {
+                    valueSuffix: ' Mins'
+                }
+            }, {
+                name: 'Data Usage',
+                data: usageData,
+				tooltip: {
+                    valueSuffix: ' MB'
+                }
+            }]
+        });
+	}
+	
+	function openItemisedBil(month, year){
+		var hidden = $('#monthlyBillURL');
+		var url = hidden.attr( 'value' )+'/'+month+'/'+year+'.do';
+		window.open(url, 'Itemised Bill', 'width=800, height=600, status=yes, menubar=no, scrollbars=yes, resizable=yes');
+	}
+	</script>
+</head>
+  <body>
+    <div class="wrapper">
+		<header class="header">
+			#parse("menu.vm")
+		</header>
+		<div class="container-fluid">
+		    <div class="row-fluid" id="formConatiner">
+			    <div class="span12">
+				    <div class="well">
+    					<h4>Usage Statistics</h4>
+                		<div id="billingHistoryContainer" style="min-width: 320px; max-width: 800px; height:100%; margin: 0 auto;"></div>
+            			<br/>
+            			<div id="dataUsageContainer" style="min-width: 320px; max-width: 800px; height:100%; margin: 0 auto;"></div>
+            			
+                        <form id="billingHistoryChartFrm" action="#springUrl('/billingHistoryData.do')" method="post">
+                    		<input type="hidden" id="monthlyBillURL" value="#springUrl('/monthlyItemisedBill')" />
+                        </form>
+					</div>
+				</div>
+            </div>
+        </div>
+		<footer class="footer">
+			#parse("footer.vm")
+		</footer>
+    </div>
+  </body>
 </html>

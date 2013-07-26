@@ -1,8 +1,8 @@
 package com.cognizant.cmobile.impl.service;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -56,31 +56,42 @@ public class BillingServiceImpl implements BillingService {
 	}
 
 	public MyBillVO getMyBillDetails() {
-
-		Calendar calendar = Calendar.getInstance();
 		MyBillVO myBillVO = new MyBillVO();
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMM yyyy");
+		Calendar calendar = Calendar.getInstance();
+
 		myBillVO.setLastBill(489);
-		myBillVO.setLastBillDate(calendar.getTime());
+		myBillVO.setLastBillDate(simpleDateFormat.format(calendar.getTime()));
 		calendar.add(Calendar.DATE, 15);
-		myBillVO.setLastBillDueDate(calendar.getTime());
+		myBillVO.setLastBillDueDate(simpleDateFormat.format(calendar.getTime()));
 		myBillVO.setLastBillFlag(true);
 		myBillVO.setLastPayment(120);
 		calendar.add(Calendar.MONTH, -1);
-		myBillVO.setLastPaymentDate(calendar.getTime());
+		myBillVO.setLastPaymentDate(simpleDateFormat.format(calendar.getTime()));
 		myBillVO.setLastPaymentFlag(true);
 		myBillVO.setMakePaymentFlag(true);
 		calendar.add(Calendar.MONTH, 1);
 		calendar.add(Calendar.DATE, 15);
-		myBillVO.setNextBillDate(calendar.getTime());
+		myBillVO.setNextBillDate(simpleDateFormat.format(calendar.getTime()));
 		myBillVO.setRecentCharges(12);
-		myBillVO.setRecentChargesFlag(true);
+		myBillVO.setDataUsageFlag(true);
+		myBillVO.setTotalData(1000);
+		myBillVO.setTotalMinutes(2000);
+		myBillVO.setMinutesUsed(1500);
+		myBillVO.setDataUsed(650);
+		myBillVO.setCurrency("£");
 
 		return myBillVO;
 	}
 
-	public InputStream getItemisedMonthlyBill(String month, long year) throws FileNotFoundException {
-		
-		InputStream inputStream= Thread.currentThread().getContextClassLoader().getResourceAsStream("pdfFiles/MobileBill_"+month+"_"+year+".pdf");
+	public InputStream getItemisedMonthlyBill(String month, long year)
+			throws FileNotFoundException {
+
+		InputStream inputStream = Thread
+				.currentThread()
+				.getContextClassLoader()
+				.getResourceAsStream(
+						"pdfFiles/MobileBill_" + month + "_" + year + ".pdf");
 		return inputStream;
 	}
 
