@@ -30,9 +30,47 @@
     <script src="resources/highcharts/modules/exporting.js"></script>
 	<script src="resources/highcharts/highcharts-more.js"></script>
 	<script type="text/javascript">
-    function generateGaugeChart() {
-    	
-        $('#minsGaugeContainer').highcharts({
+	var minsRanges = new Array();
+	var dataRanges = new Array();
+	
+	var maximumMinutes;
+	var maximumData;
+
+	var actualMins;
+	var actualData;
+	
+	function generateGaugeChart() {
+		var form = $('#myBillChartFrm');
+	    #[[$]]#.ajax({
+        	type: "POST",
+			url: form.attr( 'action' ),
+        	data: '',
+        	success: function(response){
+    			if(response.status == 'Pass'){
+					maximumMinutes = response.result.totalMinutes;
+					maximumData = response.result.totalData;
+					
+					minsRanges = response.result.minsRanges;
+					dataRanges = response.result.dataRanges;
+					
+					actualMins = response.result.minutesUsed;
+					actualData = response.result.dataUsed;
+					
+					generateMinsGaugeChart();
+					generateDataGaugeChart();
+                 }else{
+                     $('#error').html("Please correct following errors: " + response.result);
+                 }
+				 
+         	},
+         	error: function(e){
+            	alert('Error: ' + e);
+         	}
+    	});
+	}
+    function generateMinsGaugeChart() {
+
+		$('#minsGaugeContainer').highcharts({
     	
     	    chart: {
     	        type: 'gauge',
@@ -82,7 +120,7 @@
     	    // the value axis
     	    yAxis: {
     	        min: 0,
-    	        max: 2000,
+    	        max: maximumMinutes,
     	        
     	        minorTickInterval: 'auto',
     	        minorTickWidth: 1,
@@ -101,24 +139,118 @@
     	        },
     	        plotBands: [{
     	            from: 0,
-    	            to: 1000,
+    	            to: minsRanges[0],
     	            color: '#55BF3B' // green
     	        }, {
-    	            from: 1000,
-    	            to: 1500,
+    	            from: minsRanges[0],
+    	            to: minsRanges[1],
     	            color: '#DDDF0D' // yellow
     	        }, {
-    	            from: 1500,
-    	            to: 2000,
+    	            from: minsRanges[1],
+    	            to: maximumMinutes,
     	            color: '#DF5353' // red
     	        }]        
     	    },
     	
     	    series: [{
     	        name: 'Minutes',
-    	        data: [970],
+    	        data: [actualMins],
     	        tooltip: {
     	            valueSuffix: ' mins'
+    	        }
+    	    }]
+    	
+    	});
+	}
+	function generateDataGaugeChart() {
+	
+		$('#dataGaugeContainer').highcharts({
+    	
+    	    chart: {
+    	        type: 'gauge',
+    	        plotBackgroundColor: null,
+    	        plotBackgroundImage: null,
+    	        plotBorderWidth: 0,
+    	        plotShadow: false
+    	    },
+    	    
+    	    title: {
+    	        text: 'Data Usage'
+    	    },
+    	    
+    	    pane: {
+    	        startAngle: -150,
+    	        endAngle: 150,
+    	        background: [{
+    	            backgroundColor: {
+    	                linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+    	                stops: [
+    	                    [0, '#FFF'],
+    	                    [1, '#333']
+    	                ]
+    	            },
+    	            borderWidth: 0,
+    	            outerRadius: '109%'
+    	        }, {
+    	            backgroundColor: {
+    	                linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+    	                stops: [
+    	                    [0, '#333'],
+    	                    [1, '#FFF']
+    	                ]
+    	            },
+    	            borderWidth: 1,
+    	            outerRadius: '107%'
+    	        }, {
+    	            // default background
+    	        }, {
+    	            backgroundColor: '#DDD',
+    	            borderWidth: 0,
+    	            outerRadius: '105%',
+    	            innerRadius: '103%'
+    	        }]
+    	    },
+    	       
+    	    // the value axis
+    	    yAxis: {
+    	        min: 0,
+    	        max: maximumData,
+    	        
+    	        minorTickInterval: 'auto',
+    	        minorTickWidth: 1,
+    	        minorTickLength: 10,
+    	        minorTickPosition: 'inside',
+    	        minorTickColor: '#666',
+    	
+    	        tickPixelInterval: 30,
+    	        tickWidth: 2,
+    	        tickPosition: 'inside',
+    	        tickLength: 10,
+    	        tickColor: '#666',
+    	        labels: {
+    				step: 2,
+    	            rotation: 'auto'
+    	        },
+    	        plotBands: [{
+    	            from: 0,
+    	            to: dataRanges[0],
+    	            color: '#55BF3B' // green
+    	        }, {
+    	            from: dataRanges[0],
+    	            to: dataRanges[1],
+    	            color: '#DDDF0D' // yellow
+    	        }, {
+    	            from: dataRanges[1],
+    	            to: maximumData,
+    	            color: '#DF5353' // red
+    	        }]        
+    	    },
+    	
+    	    series: [{
+    	        name: 'Data',
+    	        data: [actualData],
+    	        tooltip: {
+    	            valueSuffix: ' MB'
     	        }
     	    }]
     	
@@ -197,10 +329,7 @@
                 								<br/>
                 								<dt>Data Used</dt>
                 								<dd>
-                									<div class="$myBillVO.dataProgressBarStyle">
-                										<div class="bar" style="width: $myBillVO.dataPercentage%;"></div>
-                                                        <center><span>$myBillVO.dataUsed MB / $myBillVO.totalData MB</span></center>
-                									</div>
+                									<div id="dataGaugeContainer" style="width: 300px; height: 200px; margin: 0 auto"></div>
                 								</dd>
                 							</dl>
                                         </div>
@@ -209,6 +338,8 @@
                             #end
                         
                         </div>
+						<form id="myBillChartFrm" action="#springUrl('/myBillChart.do')" method="post">
+                        </form>
 				    </div>
 			    </div>
 		     </div>

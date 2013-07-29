@@ -45,6 +45,8 @@ public class OtherNetworkConsumerServiceImpl implements OtherNetworkConsumerServ
 
 	private OtherNetworkConsumerVO convertPojoToVO(final OtherNetworkConsumer otherNetworkCustomer) {
 		Mapper mapper = DozerBeanMapperSingletonWrapper.getInstance();
-		return mapper.map(otherNetworkCustomer, OtherNetworkConsumerVO.class);
+		OtherNetworkConsumerVO networkConsumerVO = mapper.map(otherNetworkCustomer, OtherNetworkConsumerVO.class);
+		
+		return networkConsumerVO;
 	}
 }

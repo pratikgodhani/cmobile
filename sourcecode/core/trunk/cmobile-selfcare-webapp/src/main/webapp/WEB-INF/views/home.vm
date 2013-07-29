@@ -40,23 +40,23 @@
                                                 </tr>
                 								<tr>
                                                 	<td>Account No</td>
-                                                	<td>1212121</td>
+                                                	<td>$!accountDetailsVO.accountNo</td>
                                                 </tr>
                 								<tr>
                                                 	<td>Billing Address</td>
-                                                	<td>Pune, India</td>
+                                                	<td>$!accountDetailsVO.address</td>
                                                 </tr>
                 								<tr>
                                                 	<td>Email Address</td>
-                                                	<td>abc@xyz.com</td>
+                                                	<td>$!accountDetailsVO.email</td>
                                                 </tr>
                 								<tr>
                                                 	<td>Activation Date</td>
-                                                	<td>25/08/2010</td>
+                                                	<td>$!accountDetailsVO.activationDate</td>
                                                 </tr>
                 								<tr>
                                                 	<td>Billing Date</td>
-                                                	<td>25 of every month</td>
+                                                	<td>$!accountDetailsVO.billingDate</td>
                                                 </tr>
                 							</tbody>
                 						</table>

@@ -39,7 +39,16 @@ public class BillingController {
 		formResponse.setResult(billingService.getBillingHistory());
 		return formResponse;
 	}
-
+	
+	@RequestMapping(value = "/myBillChart")
+	public @ResponseBody
+	FormResponse myBillChart() throws Exception {
+		FormResponse formResponse = new FormResponse();
+		formResponse.setStatus("Pass");
+		formResponse.setResult(billingService.getMyBillDetails());
+		return formResponse;
+	}
+	
 	@RequestMapping(value = "/monthlyItemisedBill/{month}/{year}")
 	public @ResponseBody
 	void monthlyItemisedBill(@PathVariable long year,

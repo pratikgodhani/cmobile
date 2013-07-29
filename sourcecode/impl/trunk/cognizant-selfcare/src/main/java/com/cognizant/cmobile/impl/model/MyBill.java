@@ -1,9 +1,15 @@
-package com.cognizant.cmobile.api.model;
+package com.cognizant.cmobile.impl.model;
 
-public class MyBillVO {
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "myBill")
+public class MyBill {
+
+	@Id
+	private ObjectId id;
 	private long mobile;
-
 	private double lastBill;
 	private String lastBillDate;
 	private String lastBillDueDate;
@@ -19,10 +25,6 @@ public class MyBillVO {
 	private long totalMinutes;
 	private long dataUsed;
 	private long totalData;
-
-	// Chart Related Properties....
-	private long[] minsRanges = new long[2];
-	private long[] dataRanges = new long[2];
 
 	private String currency;
 
@@ -154,6 +156,14 @@ public class MyBillVO {
 		this.nextBillDate = nextBillDate;
 	}
 
+	public ObjectId getId() {
+		return id;
+	}
+
+	public void setId(ObjectId id) {
+		this.id = id;
+	}
+
 	public long getMobile() {
 		return mobile;
 	}
@@ -162,15 +172,4 @@ public class MyBillVO {
 		this.mobile = mobile;
 	}
 
-	public long[] getMinsRanges() {
-		minsRanges[0] = (totalMinutes * 50) / 100;
-		minsRanges[1] = minsRanges[0] + ((totalMinutes - minsRanges[0]) * 50 / 100);
-		return minsRanges;
-	}
-
-	public long[] getDataRanges() {
-		dataRanges[0] = (totalData * 50) / 100;
-		dataRanges[1] = dataRanges[0] + ((totalData - dataRanges[0]) * 50 / 100);
-		return dataRanges;
-	}
 }
