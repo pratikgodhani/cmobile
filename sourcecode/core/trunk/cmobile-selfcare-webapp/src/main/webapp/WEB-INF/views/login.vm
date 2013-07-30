@@ -14,7 +14,7 @@
 		<header class="header">
 		</header>
 		<div class="container-fluid">
-		    <div class="row-fluid" id="formConatiner">
+		    <div class="row-fluid" id="loginFormConatiner">
 			    <div class="span12">
 				    <div class="well">
 						<form name="registration" id="registration" method="POST" action="jspring_security_check">

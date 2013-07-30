@@ -29,10 +29,18 @@ body{
 	position: relative;
 }
 #formConatiner{
+   width: 60%;
+   height: 100%;
+   margin: auto;
+   padding: 60px 0;
+   position: relative;
+}
+#loginFormConatiner{
    width: 40%;
    height: 100%;
    margin: auto;
    padding: 60px 0;
+   position: relative;
 }
 #button-div{
    width: 90%;
@@ -65,69 +73,10 @@ body{
 /*page2 */
 
 
-#data-conaitner{
-   width:80%;
-   padding: 30px;
-   padding-bottom: 100px;
-   margin:0 auto;
-}
 .row-own{
    border-radius: 5px;
    background-color:rgb(227,227,227);
    height: 100px;
    margin: 10px 0;
    box-shadow: 0 1px 10px black;
-}
-
-.heading-titles{
-   font-size: 25px;
-}
-.subheading-titles{
-   font-size: 15px;
-}
-.section-wrapper{
-   width: 70%;
-   padding: 2% 0;
-   margin: auto;
-}
-.sec1{
-   width:10%;
-   float: left;
-   height: 80px;
-   //background-color: blue;
-}
-.sec2{
-   width:89.8%; /*88%*/
-   float: left;
-   height: 80px;
-   //background-color: red;
-}
-.result{
-   font-weight: bold;
-   display: inline;
-}
-.result-units{
-   display: inline;
-}
-.more-link{
-   display: block;
-   float:right;
-}
-.iconImg{
-   position: relative;
-   width: 30%;
-   height: 50%;
-   margin: 10%;
-}
-#myChart{
-   position: relative;
-   padding: 10% 0 0 10%;
-   width: 50%;
-   height: 100%;
-}
-#billGraph{
-   position: relative;
-   padding: 10% 0 0 10%;
-   width: 50%;
-   height: 100%;
 }

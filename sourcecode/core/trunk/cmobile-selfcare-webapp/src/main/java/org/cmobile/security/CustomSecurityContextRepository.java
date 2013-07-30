@@ -15,7 +15,6 @@ import org.springframework.security.web.context.HttpRequestResponseHolder;
 import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.stereotype.Component;
 
-import com.cognizant.cmobile.api.model.CustomerVO;
 import com.cognizant.cmobile.api.service.CustomerService;
 
 @Component

@@ -14,9 +14,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
-import com.cognizant.cmobile.api.model.CustomerVO;
-import com.cognizant.cmobile.api.service.CustomerService;
-
 @Component
 public class CustomAuthenticationSuccessHandler extends
 		SimpleUrlAuthenticationSuccessHandler {
