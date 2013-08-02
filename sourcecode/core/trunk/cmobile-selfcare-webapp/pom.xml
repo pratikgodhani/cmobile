@@ -190,7 +190,7 @@
 			<version>1.7.5</version>
 			<scope>runtime</scope>
 		</dependency>
-		
+
 		<!-- MongoDB dependency -->
 		<dependency>
 			<groupId>org.mongodb</groupId>
@@ -202,7 +202,11 @@
 			<artifactId>spring-data-mongodb</artifactId>
 			<version>1.2.0.RELEASE</version>
 		</dependency>
-		
+		<dependency>
+			<groupId>com.metaparadigm</groupId>
+			<artifactId>json-rpc</artifactId>
+			<version>1.0</version>
+		</dependency>
 		<dependency>
 			<groupId>com.cognizant</groupId>
 			<artifactId>cmobile-selfcare-api</artifactId>
