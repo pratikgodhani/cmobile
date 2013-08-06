@@ -21,10 +21,12 @@ public class ProfileInitializer implements
 	@Override
 	public void initialize(ConfigurableWebApplicationContext applicationContext) {
 
-		// The profile can be read from property file or environment variable
-
-		applicationContext.getEnvironment().setActiveProfiles("dev");
-
+		String activeProfile=System.getenv("MYAPP_ACTIVE_PROFILE");
+		if(activeProfile==null){
+			System.exit(1);
+		}else{
+			applicationContext.getEnvironment().setActiveProfiles(activeProfile);	
+		}
 	}
 
 }

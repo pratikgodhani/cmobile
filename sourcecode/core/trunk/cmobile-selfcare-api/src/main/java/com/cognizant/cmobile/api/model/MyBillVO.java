@@ -19,12 +19,14 @@ public class MyBillVO {
 	private long totalMinutes;
 	private long dataUsed;
 	private long totalData;
+	private String currency;
 
 	// Chart Related Properties....
 	private long[] minsRanges = new long[2];
 	private long[] dataRanges = new long[2];
 
-	private String currency;
+	private int dataLabelStep = 2;
+	private int minutesLabelStep = 2;
 
 	public double getLastBill() {
 		return lastBill;
@@ -164,13 +166,30 @@ public class MyBillVO {
 
 	public long[] getMinsRanges() {
 		minsRanges[0] = (totalMinutes * 50) / 100;
-		minsRanges[1] = minsRanges[0] + ((totalMinutes - minsRanges[0]) * 50 / 100);
+		minsRanges[1] = minsRanges[0]
+				+ ((totalMinutes - minsRanges[0]) * 50 / 100);
 		return minsRanges;
 	}
 
 	public long[] getDataRanges() {
 		dataRanges[0] = (totalData * 50) / 100;
-		dataRanges[1] = dataRanges[0] + ((totalData - dataRanges[0]) * 50 / 100);
+		dataRanges[1] = dataRanges[0]
+				+ ((totalData - dataRanges[0]) * 50 / 100);
 		return dataRanges;
 	}
+
+	public int getDataLabelStep() {
+		if (this.totalData >= 1000) {
+			this.dataLabelStep = 4;
+		}
+		return dataLabelStep;
+	}
+
+	public int getMinutesLabelStep() {
+		if (this.totalMinutes >= 1000) {
+			this.minutesLabelStep = 4;
+		}
+		return minutesLabelStep;
+	}
+
 }

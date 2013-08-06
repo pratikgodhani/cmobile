@@ -39,6 +39,9 @@
 	var actualMins;
 	var actualData;
 	
+	var minutesLabelStep;
+	var dataLabelStep;
+	
 	function generateGaugeChart() {
 		var form = $('#myBillChartFrm');
 	    #[[$]]#.ajax({
@@ -49,6 +52,9 @@
     			if(response.status == 'Pass'){
 					maximumMinutes = response.result.totalMinutes;
 					maximumData = response.result.totalData;
+					
+					minutesLabelStep = response.result.minutesLabelStep;
+					dataLabelStep = response.result.dataLabelStep;
 					
 					minsRanges = response.result.minsRanges;
 					dataRanges = response.result.dataRanges;
@@ -134,7 +140,7 @@
     	        tickLength: 10,
     	        tickColor: '#666',
     	        labels: {
-    				step: 2,
+    				step: minutesLabelStep,
     	            rotation: 'auto'
     	        },
     	        plotBands: [{
@@ -228,7 +234,7 @@
     	        tickLength: 10,
     	        tickColor: '#666',
     	        labels: {
-    				step: 2,
+    				step: dataLabelStep,
     	            rotation: 'auto'
     	        },
     	        plotBands: [{
@@ -324,12 +330,12 @@
                     							<dd>$myBillVO.nextBillDate</dd>
                 								<dt>Minutes Used</dt>
                 								<dd>
-                									<div id="minsGaugeContainer" style="width: 300px; height: 200px; margin: 0 auto"></div>
+                									<div id="minsGaugeContainer" style="width: 300px; height: 250px; margin: 0 auto"></div>
                 								</dd>
                 								<br/>
                 								<dt>Data Used</dt>
                 								<dd>
-                									<div id="dataGaugeContainer" style="width: 300px; height: 200px; margin: 0 auto"></div>
+                									<div id="dataGaugeContainer" style="width: 300px; height: 250px; margin: 0 auto"></div>
                 								</dd>
                 							</dl>
                                         </div>
