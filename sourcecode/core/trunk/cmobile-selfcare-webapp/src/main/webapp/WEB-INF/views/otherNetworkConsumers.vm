@@ -23,7 +23,7 @@
                     		<div class="accordion-group">
                                 <div class="accordion-heading">
                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                                    Your Top 3 other network call numbers
+                                   <h5>Your top 3 other network Call Numbers<h5>
                                     </a>
                                 </div>
                                 <div id="collapseOne" class="accordion-body collapse in">

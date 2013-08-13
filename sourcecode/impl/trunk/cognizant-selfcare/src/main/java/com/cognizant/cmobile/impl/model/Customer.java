@@ -10,10 +10,18 @@ public class Customer {
 	@Id
 	private ObjectId id;
 	private String username;
+	private String displayname;
 	private String password;
 	private long mobile;
 	
-
+	public String getDisplayname() {
+		return displayname;
+	}
+	
+	public void setDisplayname(String displayname) {
+		this.displayname = displayname;
+	}
+	
 	public ObjectId getId() {
 		return id;
 	}

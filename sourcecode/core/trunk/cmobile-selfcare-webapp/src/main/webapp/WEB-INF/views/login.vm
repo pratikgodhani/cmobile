@@ -24,11 +24,12 @@
                                       $errorMsg
                                     </div>
     							#end
-    						   <legend>Login</legend>
-    						   <input type="text" id="j_username" name="j_username" class="input-block-level" placeholder="User name" />
+    						   <legend>Login <a class="pull-right" style="font-size:15px" href="#">Register</a></legend>
+
+							   <input type="text" id="j_username" name="j_username" class="input-block-level" placeholder="User name" />
     						   <input type="password" id="j_password" name="j_password" class="input-block-level" placeholder="Password" />
     						   <div id="button-div" class="clearfix">
-    								<input type="submit" class="btn btn-primary" id="btn-login"  value="login"/>
+    								<input type="submit" class="btn btn-primary" id="btn-login"  value="Login"/>
     								<a class="forgot-link" href="#">Forgot Password?</a>
     						   </div>
     					   </fieldset>
@@ -38,6 +39,7 @@
 		     </div>
 		</div>
 		<footer class="footer">
+			#parse("footer.vm")
 		</footer>
     </div>
   </body>

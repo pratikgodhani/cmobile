@@ -23,18 +23,18 @@
                     		<div class="accordion-group">
                                 <div class="accordion-heading">
                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                                    Your subscribed plans
+                                    <h5>Your Subscribed Plans</h5>
                                     </a>
                                 </div>
                                 <div id="collapseOne" class="accordion-body collapse in">
                     				<div class="accordion-inner">
                                         #foreach( $plan in $response.result )
             								<dl class="dl-horizontal">
-                                              <dt>Plan name</dt>
+                                              <dt>Plan Name</dt>
                                               <dd>$plan.name</dd>
-                                              <dt>Plan description</dt>
+                                              <dt>Plan Description</dt>
                                               <dd>$plan.description</dd>
-                                              <dt>Salient features</dt>
+                                              <dt>Salient Features</dt>
                                               <dd>#foreach($feature in $plan.features)
                                 					#if( $feature.visible)
                                 						$feature.name $feature.description<br/>			

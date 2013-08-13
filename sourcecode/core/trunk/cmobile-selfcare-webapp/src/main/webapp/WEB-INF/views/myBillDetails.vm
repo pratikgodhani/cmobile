@@ -3,6 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>My Bill</title>
     
 	#parse("css.vm")
@@ -273,22 +274,22 @@
 		    <div class="row-fluid" id="formConatiner">
 			    <div class="span12">
 				    <div class="well">
-						<h4>My bill details</h4>
+						<h4>My Bill Details</h4>
 						<div class="accordion" id="accordion2">
                             #if($myBillVO.lastBillFlag)
                                 <div class="accordion-group">
                                     <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                                        Last bill
+                                        Last Bill
                                         </a>
                                     </div>
                                     <div id="collapseOne" class="accordion-body collapse in">
                     					<div class="accordion-inner">
                                             $myBillVO.lastBill&nbsp;$myBillVO.currency
                                             <dl class="dl-horizontal">
-                                              <dt>Last billed on</dt>
+                                              <dt>Last Billed On</dt>
                                               <dd>$myBillVO.lastBillDate</dd>
-                							  <dt>Payment due on</dt>
+                							  <dt>Payment Due On</dt>
                                               <dd>$myBillVO.lastBillDueDate</dd>
                                             </dl> 
                                         </div>
@@ -300,14 +301,14 @@
                                 <div class="accordion-group">
                                     <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-                                        Last payment
+                                        Last Payment
                                         </a>
                                     </div>
                                     <div id="collapseThree" class="accordion-body collapse">
                                         <div class="accordion-inner">
                                             $myBillVO.lastPayment &nbsp; $myBillVO.currency 
                                             <dl class="dl-horizontal">
-                								<dt>Payment received on</dt>
+                								<dt>Payment Received On</dt>
                 								<dd>$myBillVO.lastPaymentDate</dd>
                 							</dl>
                                         </div>
@@ -318,7 +319,7 @@
                                 <div class="accordion-group">
                                     <div class="accordion-heading">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour" onclick="generateGaugeChart()">
-                                        Data usage
+                                        Data Usage
                                         </a>
                                     </div>
                                     <div id="collapseFour" class="accordion-body collapse">
@@ -326,7 +327,7 @@
                                             <dl class="dl-horizontal">
                 								<dt>Unbilled Amount</dt>
                 								<dd>$myBillVO.recentCharges&nbsp;$myBillVO.currency</dd>
-                								<dt>Your next bill date is</dt>
+                								<dt>Your next Bill Date is</dt>
                     							<dd>$myBillVO.nextBillDate</dd>
                 								<dt>Minutes Used</dt>
                 								<dd>

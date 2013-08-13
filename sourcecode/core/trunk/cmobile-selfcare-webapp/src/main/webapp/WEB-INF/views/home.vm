@@ -23,7 +23,7 @@
                 			<div class="accordion-group">
                                 <div class="accordion-heading">
                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                                    Summary of your account
+                                    Summary of Your Account
                                     </a>
                                 </div>
                                 <div id="collapseOne" class="accordion-body collapse in">
@@ -32,7 +32,7 @@
                 							<tbody>
                                                 <tr>
                                                 	<td>Name</td>
-                                                	<td>$!customer.username</td>
+                                                	<td>$!customer.displayname</td>
                                                 </tr>
                 								<tr>
                                                 	<td>Mobile</td>
