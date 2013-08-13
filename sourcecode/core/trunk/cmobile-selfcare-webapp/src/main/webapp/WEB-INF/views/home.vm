@@ -14,7 +14,7 @@
 		<header class="header">
 			#parse("menu.vm")
 		</header>
-		<div class="container-fluid" style="min-height:85.5%">
+		<div class="container-fluid" style="min-height:85.5% min-width: fit-content">
 		    <div class="row-fluid" id="formConatiner">
 			    <div class="span12">
 				    <div class="well">

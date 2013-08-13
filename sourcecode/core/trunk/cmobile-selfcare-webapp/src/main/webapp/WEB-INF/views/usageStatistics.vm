@@ -161,7 +161,7 @@
 	function openItemisedBil(month, year){
 		var hidden = $('#monthlyBillURL');
 		var url = hidden.attr( 'value' )+'/'+month+'/'+year+'.do';
-		window.open(url, 'Itemised Bill', 'width=800, height=600, status=yes, menubar=no, scrollbars=yes, resizable=yes');
+		window.open(url, 'Itemised_Bill', 'width=800, height=600, status=yes, menubar=no, scrollbars=yes, resizable=yes');
 	}
 	</script>
 </head>
