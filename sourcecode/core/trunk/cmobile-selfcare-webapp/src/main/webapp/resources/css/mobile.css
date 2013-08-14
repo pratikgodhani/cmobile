@@ -34,4 +34,7 @@
 	   padding-top: 10px;
 	   text-align: center;
 	}
+	table .column{
+		word-break: break-all;
+	}
 }

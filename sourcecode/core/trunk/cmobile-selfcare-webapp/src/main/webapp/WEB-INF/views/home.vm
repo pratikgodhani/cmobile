@@ -9,12 +9,12 @@
 	
 	#parse("Javascript.vm")
 </head>
-  <body>
+  <body style="min-width: 320px">
     <div class="wrapper">
 		<header class="header">
 			#parse("menu.vm")
 		</header>
-		<div class="container-fluid" style="min-height:85.5% min-width: fit-content">
+		<div class="container-fluid" style="min-height:85.5%">
 		    <div class="row-fluid" id="formConatiner">
 			    <div class="span12">
 				    <div class="well">
@@ -48,7 +48,7 @@
                                                 </tr>
                 								<tr>
                                                 	<td>Email Address</td>
-                                                	<td>$!accountDetailsVO.email</td>
+                                                	<td class="column"><p>$!accountDetailsVO.email</p></td>
                                                 </tr>
                 								<tr>
                                                 	<td>Activation Date</td>

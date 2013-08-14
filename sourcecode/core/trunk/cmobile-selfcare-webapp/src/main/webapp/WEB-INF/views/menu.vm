@@ -1,33 +1,42 @@
-<div>
-    <ul class="nav nav-pills nav-tabs span">
-		#if ($pageName == 'homePage')
-			<li class="active">
-		#else
-			<li>
-		#end
-		<a href="#springUrl('/home.do')"><i class="icon-home icon-white"></i>Home</a></li>
-		#if ($pageName == 'myBill')
-			<li class="active">
-		#else
-			<li>
-		#end
-        <a href="#springUrl('/myBillDetails.do')"><i class="icon-briefcase icon-white"></i>My Bill</a></li>
-        
-		#if ($pageName == 'usageStatistics')
-			<li class="active">
-		#else
-			<li>
-		#end<a href="#springUrl('/usageStatistics.do')"><i class="icon-briefcase icon-white"></i>Usage Statistics</a></li>
-        #if ($pageName == 'offers')
-			<li class="active">
-		#else
-			<li>
-		#end<a href="#springUrl('/otherNetworkConsumers.do')"><i class="icon-gift icon-white"></i>Offers</a></li>
-        #if ($pageName == 'planDetails')
-			<li class="active">
-		#else
-			<li>
-		#end<a href="#springUrl('/plans.do')"><i class="icon-list icon-white"></i>Plan Details</a></li>
-		<li><a href="#springUrl('/logout.do')"><i class="icon-off icon-white"></i>Logout</a></li>
-    </ul>
+<div class="row-fluid">
+	<div class="navbar navbar-inverse">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<a class="btn btn-navbar" data-toggle="collapse"
+					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span>
+				</a>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						#if ($pageName == 'home.do')
+						<li class="active">#else
+						<li>#end<a href="#springUrl('/home.do')"><i
+								class="icon-home icon-white"></i>Home</a></li> #if ($pageName ==
+						'myBill')
+						<li class="active">#else
+						<li>#end<a href="#springUrl('/myBillDetails.do')"><i
+								class="icon-briefcase icon-white"></i>My Bill</a></li> #if ($pageName ==
+						'usageStatistics')
+						<li class="active">#else
+						<li>#end<a href="#springUrl('/usageStatistics.do')"><i
+								class="icon-briefcase icon-white"></i>Usage Statistics</a></li> #if
+						($pageName == 'offers')
+						<li class="active">#else
+						<li>#end<a href="#springUrl('/otherNetworkConsumers.do')"><i
+								class="icon-gift icon-white"></i>Offers</a></li> #if ($pageName ==
+						'planDetails')
+						<li class="active">#else
+						<li>#end<a href="#springUrl('/plans.do')"><i
+								class="icon-list icon-white"></i>Plan Details</a></li>
+						<li><a href="#springUrl('/logout.do')"><i
+								class="icon-off icon-white"></i>Logout</a></li>
+					</ul>
+				</div>
+				<!-- /.nav-collapse -->
+			</div>
+			<!-- /.container -->
+		</div>
+		<!-- /.navbar-inner -->
+	</div>
+	<!-- /.navbar -->
 </div>
