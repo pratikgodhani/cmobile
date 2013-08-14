@@ -37,4 +37,7 @@
 	table .column{
 		word-break: break-all;
 	}
+	.logo{
+		background-image: /resources/images/mediaum.png;
+	}
 }

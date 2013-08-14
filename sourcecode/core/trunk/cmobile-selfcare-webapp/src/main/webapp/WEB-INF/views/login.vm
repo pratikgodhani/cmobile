@@ -9,7 +9,7 @@
 	
 	#parse("Javascript.vm")
 </head>
-  <body>
+  <body style="min-width: 320px; max-height: 100%">
     <div class="wrapper">
 		<header class="header">
 		</header>
@@ -25,7 +25,6 @@
                                     </div>
     							#end
     						   <legend>Login <a class="pull-right" style="font-size:15px" href="#">Register</a></legend>
-
 							   <input type="text" id="j_username" name="j_username" class="input-block-level" placeholder="User name" />
     						   <input type="password" id="j_password" name="j_password" class="input-block-level" placeholder="Password" />
     						   <div id="button-div" class="clearfix">
@@ -34,6 +33,9 @@
     						   </div>
     					   </fieldset>
                     	</form>
+				    </div>
+				    <div style="font-size: 12px">
+				    	*Best viewed in Firefox, IE8+, IPhone 4+, Galaxy Note 2
 				    </div>
 			    </div>
 		     </div>

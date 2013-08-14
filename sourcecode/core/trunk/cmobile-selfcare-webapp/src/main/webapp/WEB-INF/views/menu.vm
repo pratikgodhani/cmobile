@@ -2,12 +2,19 @@
 	<div class="navbar navbar-inverse">
 		<div class="navbar-inner">
 			<div class="container-fluid">
+				<span class="pull-right" style="margin-right:-50px;" >
+					<img src="http://localhost:8080/cmobile-selfcare-webapp/resources/images/medium.png" height="50%" width="45%" alt="Cognizant">
+					</img>
+				</span>
+				<span class="pull-left" style="color:white;font-weight:bold;font-size:18px; vertical-align:middle; margin-top: 10px; margin-left:0px;">CMobile Selfcare
+				</span>
 				<a class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span>
+					data-target=".nav-collapse"> 
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 				</a>
+				
 				<div class="nav-collapse collapse">
-					<ul class="nav">
+					<ul class="nav" style="margin-left:11%;">
 						#if ($pageName == 'home.do')
 						<li class="active">#else
 						<li>#end<a href="#springUrl('/home.do')"><i
