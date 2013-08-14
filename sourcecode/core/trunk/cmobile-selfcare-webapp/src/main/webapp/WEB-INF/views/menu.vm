@@ -3,7 +3,7 @@
 		<div class="navbar-inner">
 			<div class="container-fluid">
 				<span class="pull-right" style="margin-right:-50px;" >
-					<img src="http://localhost:8080/cmobile-selfcare-webapp/resources/images/medium.png" height="50%" width="45%" alt="Cognizant">
+					<img src="resources/images/medium.png" height="50%" width="45%" alt="Cognizant">
 					</img>
 				</span>
 				<span class="pull-left" style="color:white;font-weight:bold;font-size:18px; vertical-align:middle; margin-top: 10px; margin-left:0px;">CMobile Selfcare

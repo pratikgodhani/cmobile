@@ -12,8 +12,15 @@
   <body style="min-width: 320px; max-height: 100%">
     <div class="wrapper">
 		<header class="header">
+			<span class="pull-right" style="margin-right:10px;" >
+					<img src="resources/images/medium.png" height="50%" width="45%" alt="Cognizant">
+					</img>
+				</span>
+				<span class="pull-left" style="color:white;font-weight:bold;font-size:18px; vertical-align:middle; margin-top: 10px; margin-left:50px;">CMobile Selfcare
+				</span>
 		</header>
 		<div class="container-fluid">
+			
 		    <div class="row-fluid" id="loginFormConatiner">
 			    <div class="span12">
 				    <div class="well">
