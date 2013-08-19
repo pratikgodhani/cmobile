@@ -72,5 +72,8 @@
 			#parse("footer.vm")
 		</footer>
     </div>
+    <script type="text/javascript">
+    	$("#homeMenu").addClass("active");
+    </script>
   </body>
 </html>

@@ -355,5 +355,8 @@
 			#parse("footer.vm")
 		</footer>
     </div>
+    <script type="text/javascript">
+    	$("#myBillMenu").addClass("active");
+    </script>
   </body>
 </html>

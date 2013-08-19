@@ -54,5 +54,8 @@
 			#parse("footer.vm")
 		</footer>
     </div>
+    <script type="text/javascript">
+    	$("#planDetailsMenu").addClass("active");
+    </script>
   </body>
 </html>

@@ -188,5 +188,8 @@
 			#parse("footer.vm")
 		</footer>
     </div>
+    <script type="text/javascript">
+    	$("#usageMenu").addClass("active");
+    </script>
   </body>
 </html>

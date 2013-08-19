@@ -47,5 +47,8 @@
 			#parse("footer.vm")
 		</footer>
     </div>
+    <script type="text/javascript">
+    	$("#offersMenu").addClass("active");
+    </script>
   </body>
 </html>

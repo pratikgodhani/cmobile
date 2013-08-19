@@ -15,26 +15,26 @@
 				
 				<div class="nav-collapse collapse">
 					<ul class="nav" style="margin-left:11%;">
-						#if ($pageName == 'home.do')
+						#if ($status == 'Pass')
 						<li class="active">#else
-						<li>#end<a href="#springUrl('/home.do')"><i
+						<li id="homeMenu">#end<a href="#springUrl('/home.do')"><i
 								class="icon-home icon-white"></i>Home</a></li> #if ($pageName ==
 						'myBill')
 						<li class="active">#else
-						<li>#end<a href="#springUrl('/myBillDetails.do')"><i
+						<li id="myBillMenu">#end<a href="#springUrl('/myBillDetails.do')"><i
 								class="icon-briefcase icon-white"></i>My Bill</a></li> #if ($pageName ==
 						'usageStatistics')
 						<li class="active">#else
-						<li>#end<a href="#springUrl('/usageStatistics.do')"><i
-								class="icon-briefcase icon-white"></i>Usage Statistics</a></li> #if
+						<li id="usageMenu">#end<a href="#springUrl('/usageStatistics.do')"><i
+								class="icon-briefcase icon-white"></i>My Usage</a></li> #if
 						($pageName == 'offers')
 						<li class="active">#else
-						<li>#end<a href="#springUrl('/otherNetworkConsumers.do')"><i
-								class="icon-gift icon-white"></i>Offers</a></li> #if ($pageName ==
+						<li id="offersMenu">#end<a href="#springUrl('/otherNetworkConsumers.do')"><i
+								class="icon-gift icon-white"></i>My Offers</a></li> #if ($pageName ==
 						'planDetails')
 						<li class="active">#else
-						<li>#end<a href="#springUrl('/plans.do')"><i
-								class="icon-list icon-white"></i>Plan Details</a></li>
+						<li id="planDetailsMenu">#end<a href="#springUrl('/plans.do')"><i
+								class="icon-list icon-white"></i>My Plan</a></li>
 						<li><a href="#springUrl('/logout.do')"><i
 								class="icon-off icon-white"></i>Logout</a></li>
 					</ul>
