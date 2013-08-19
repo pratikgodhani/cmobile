@@ -9,12 +9,12 @@
 	
 	#parse("Javascript.vm")
 </head>
-  <body style="min-width: 320px">
+  <body style="min-width: 320px; max-height=100%;">
     <div class="wrapper">
 		<header class="header">
 			#parse("menu.vm")
 		</header>
-		<div class="container-fluid" style="min-height:85.5%">
+		<div class="container-fluid" style="min-height:85.5%;">
 		    <div class="row-fluid" id="formConatiner">
 			    <div class="span12">
 				    <div class="well">
