@@ -1,6 +1,7 @@
 package org.cmobile.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +34,12 @@ public class NavigationController {
 	public ModelAndView myBillDetails(Model model) {
 		model.addAttribute("myBillVO", billingService.getMyBillDetails());
 		return new ModelAndView("myBillDetails");
+	}
+	
+	@RequestMapping(value = "/feedback")
+	public ModelAndView myFeedback(Model model) {
+		model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+		return new ModelAndView("feedback");
 	}
 
 }

@@ -12,7 +12,7 @@ public class LoginServiceImpl implements LoginService {
 
 	@Autowired
 	CustomerRepository customerRepository;
-	
+
 	public boolean authenticate(final String userName,
 			final String password) {
 		Customer customer = customerRepository.findByUsernameAndPassword(
