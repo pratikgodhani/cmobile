@@ -1,6 +1,7 @@
 package org.cmobile.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,9 @@ public class NavigationController {
 	
 	@Autowired
 	BillingService billingService;
+	
+	@Autowired
+	Environment env;
 	
 	@RequestMapping(value = "/usageStatistics")
 	public ModelAndView usageStatistics() {
@@ -38,6 +42,8 @@ public class NavigationController {
 	
 	@RequestMapping(value = "/feedback")
 	public ModelAndView myFeedback(Model model) {
+		String csurveyBaseURL = env.getProperty("csurvey.base.url");
+		model.addAttribute("csurveyBaseURL", csurveyBaseURL);
 		model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 		return new ModelAndView("feedback");
 	}

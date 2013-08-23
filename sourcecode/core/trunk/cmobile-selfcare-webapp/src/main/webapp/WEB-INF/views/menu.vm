@@ -14,7 +14,7 @@
 				</a>
 				
 				<div class="nav-collapse collapse">
-					<ul class="nav" style="margin-left:11%;">
+					<ul class="nav" style="margin-left:9%;">
 						#if ($status == 'Pass')
 						<li class="active">#else
 						<li id="homeMenu">#end<a href="#springUrl('/home.do')"><i
@@ -35,6 +35,11 @@
 						<li class="active">#else
 						<li id="planDetailsMenu">#end<a href="#springUrl('/plans.do')"><i
 								class="icon-list icon-white"></i>My Plan</a></li>
+						#if ($pageName ==
+						'feedback')
+						<li class="active">#else
+						<li id="feedbackMenu">#end<a href="#springUrl('/feedback.do')"><i
+								class="icon-list icon-white"></i>My Feedback</a></li>
 						<li><a href="#springUrl('/logout.do')"><i
 								class="icon-off icon-white"></i>Logout</a></li>
 					</ul>
